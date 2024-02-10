@@ -1,17 +1,50 @@
-[gd_scene load_steps=5 format=3 uid="uid://bgoa3ybtkia1r"]
+[gd_scene load_steps=11 format=3 uid="uid://bgoa3ybtkia1r"]
 
-[ext_resource type="Texture2D" uid="uid://b3qdfiutarp7v" path="res://images/table.png" id="1_lhyal"]
+[ext_resource type="Script" path="res://scripts/magnifying_glass.gd" id="1_eamb5"]
 [ext_resource type="Texture2D" uid="uid://d13w3m404w3yh" path="res://icon.svg" id="3_fxfe3"]
+[ext_resource type="Shader" path="res://shaders/magnifying_glass_local.gdshader" id="3_hhreh"]
 [ext_resource type="Script" path="res://scripts/preview_manager.gd" id="4_5nd3g"]
 [ext_resource type="Script" path="res://scripts/clickable_area.gd" id="4_pc2qi"]
+[ext_resource type="Texture2D" uid="uid://cnxw4jyoqvgb" path="res://images/room.png" id="4_shr20"]
+[ext_resource type="Shader" path="res://shaders/magnifying_glass.gdshader" id="5_edfwg"]
+[ext_resource type="Texture2D" uid="uid://bs60kywmljciw" path="res://code-example.png" id="7_5dk3s"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l5601"]
+shader = ExtResource("5_edfwg")
+shader_parameter/target = Vector2(0.5, 0.5)
+shader_parameter/strength_low = 2.0
+shader_parameter/strength_high = 4.0
+shader_parameter/radius = 108.784
+shader_parameter/zoom = 0.7
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fsog5"]
+shader = ExtResource("3_hhreh")
+shader_parameter/target = Vector2(300, 300)
+shader_parameter/radius = 50.0
+shader_parameter/strength = 4
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_eamb5")
 
-[node name="Table" type="Sprite2D" parent="."]
-position = Vector2(559, 413)
-texture = ExtResource("1_lhyal")
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(512, 512)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D/CanvasLayer"]
+material = SubResource("ShaderMaterial_l5601")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Room" type="Sprite2D" parent="."]
+position = Vector2(514, 516)
+texture = ExtResource("4_shr20")
 
 [node name="Node2D" type="Node2D" parent="."]
+visible = false
 
 [node name="banan" type="Sprite2D" parent="Node2D"]
 position = Vector2(72, 60)
@@ -23,19 +56,20 @@ texture = ExtResource("3_fxfe3")
 [node name="PreviewManager" type="Node2D" parent="."]
 script = ExtResource("4_5nd3g")
 
-[node name="clickable1" type="Sprite2D" parent="." node_paths=PackedStringArray("nodeToPreview", "previewManager")]
-position = Vector2(422, 309)
-texture = ExtResource("3_fxfe3")
-script = ExtResource("4_pc2qi")
-id = "clck1"
-nodeToPreview = NodePath("../Node2D")
-previewManager = NodePath("../PreviewManager")
-
-[node name="clickable2" type="Sprite2D" parent="." node_paths=PackedStringArray("nodeToPreview", "previewManager")]
-position = Vector2(683, 302)
-rotation = -0.689405
+[node name="letak" type="Sprite2D" parent="." node_paths=PackedStringArray("nodeToPreview", "previewManager")]
+visible = false
+position = Vector2(497, 844)
+rotation = -0.102901
+scale = Vector2(1.1566, 1.46106)
 texture = ExtResource("3_fxfe3")
 script = ExtResource("4_pc2qi")
 id = "click2"
-nodeToPreview = NodePath("../Node2D")
+nodeToPreview = NodePath("../Code-example")
 previewManager = NodePath("../PreviewManager")
+
+[node name="Code-example" type="Sprite2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_fsog5")
+position = Vector2(515, 512)
+scale = Vector2(1.305, 1.305)
+texture = ExtResource("7_5dk3s")

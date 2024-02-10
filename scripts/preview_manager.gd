@@ -1,6 +1,9 @@
 class_name PreviewManager
 extends Node2D
 
+signal preview_opened
+signal preview_closed
+
 var node_holding_preview: ClickableArea = null
 
 # Called when the node enters the scene tree for the first time.
@@ -19,6 +22,7 @@ func try_lock_preview(opened_node: ClickableArea):
 	print("try lock")
 	if node_holding_preview == null:
 		node_holding_preview = opened_node
+		preview_opened.emit()
 		return true
 		
 	return false
