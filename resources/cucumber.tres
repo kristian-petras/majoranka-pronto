@@ -6,5 +6,5 @@
 [resource]
 script = ExtResource("2_gm7nt")
 name = "Okurka hadovka"
-image = ExtResource("1_xt48y")
+texture = ExtResource("1_xt48y")
 price = 1799

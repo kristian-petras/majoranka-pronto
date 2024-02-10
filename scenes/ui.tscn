@@ -1,0 +1,113 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfg16hk4wplry"]
+
+[ext_resource type="PackedScene" uid="uid://dl7y3rxhxsnlj" path="res://scenes/product.tscn" id="1_71jns"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+columns = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GridContainer"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="GridContainer/VBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GridContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ColorRect2" type="ColorRect" parent="GridContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+color = Color(1, 1, 0.215686, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="GridContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+color = Color(1, 0.129412, 0.215686, 1)
+
+[node name="Product2" parent="GridContainer/VBoxContainer/HBoxContainer" instance=ExtResource("1_71jns")]
+layout_mode = 2
+
+[node name="Product" parent="GridContainer/VBoxContainer" instance=ExtResource("1_71jns")]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="GridContainer"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="GridContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GridContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="ColorRect2" type="ColorRect" parent="GridContainer/VBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+color = Color(1, 1, 0.215686, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="GridContainer/VBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+color = Color(1, 0.129412, 0.215686, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="GridContainer/VBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+color = Color(1, 1, 0.215686, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="GridContainer/VBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+color = Color(1, 1, 0.215686, 1)
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="GridContainer"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="GridContainer/VBoxContainer3"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GridContainer/VBoxContainer3"]
+layout_mode = 2
+
+[node name="ColorRect2" type="ColorRect" parent="GridContainer/VBoxContainer3/HBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+color = Color(1, 1, 0.215686, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="GridContainer/VBoxContainer3/HBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+color = Color(1, 0.129412, 0.215686, 1)
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="GridContainer"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="GridContainer/VBoxContainer4"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GridContainer/VBoxContainer4"]
+layout_mode = 2
+
+[node name="ColorRect2" type="ColorRect" parent="GridContainer/VBoxContainer4/HBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+color = Color(1, 1, 0.215686, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="GridContainer/VBoxContainer4/HBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+color = Color(1, 0.129412, 0.215686, 1)

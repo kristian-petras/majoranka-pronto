@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://c7lnqmdi1xql8"]
+[gd_scene load_steps=6 format=3 uid="uid://c7lnqmdi1xql8"]
 
 [ext_resource type="Script" path="res://scripts/timer.gd" id="1_80hco"]
 [ext_resource type="Script" path="res://scripts/grocery_list.gd" id="2_q07p0"]
 [ext_resource type="Script" path="res://scripts/level.gd" id="3_6f6ww"]
-[ext_resource type="PackedScene" uid="uid://b1ssjeq8ki1ho" path="res://scenes/product.tscn" id="4_ubabt"]
+[ext_resource type="Script" path="res://scripts/flyer_generator.gd" id="5_o7idp"]
+[ext_resource type="PackedScene" uid="uid://dfg16hk4wplry" path="res://scenes/ui.tscn" id="8_fwsjg"]
 
 [node name="World" type="Node2D"]
 
@@ -16,5 +17,7 @@ script = ExtResource("2_q07p0")
 [node name="Node" type="Node" parent="."]
 script = ExtResource("3_6f6ww")
 
-[node name="Product" parent="." instance=ExtResource("4_ubabt")]
-position = Vector2(680, 376)
+[node name="FlyerGenerator" type="Node" parent="."]
+script = ExtResource("5_o7idp")
+
+[node name="Control" parent="." instance=ExtResource("8_fwsjg")]
