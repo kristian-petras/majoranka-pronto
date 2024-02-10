@@ -1,20 +1,34 @@
-[gd_scene load_steps=11 format=3 uid="uid://c7lnqmdi1xql8"]
+[gd_scene load_steps=13 format=3 uid="uid://c7lnqmdi1xql8"]
 
 [ext_resource type="Script" path="res://scripts/timer.gd" id="1_80hco"]
+[ext_resource type="Script" path="res://scenes/game_manager.gd" id="1_h2bln"]
 [ext_resource type="Script" path="res://scripts/grocery_list.gd" id="2_q07p0"]
 [ext_resource type="Script" path="res://scripts/level.gd" id="3_6f6ww"]
 [ext_resource type="Script" path="res://scripts/flyer_generator.gd" id="5_o7idp"]
-[ext_resource type="Texture2D" uid="uid://rcnh8ot7v5n8" path="res://images/room.webp" id="6_e66jx"]
-[ext_resource type="Texture2D" uid="uid://btmg1fxk3g0jq" path="res://images/clock.png" id="7_48nr1"]
+[ext_resource type="Texture2D" uid="uid://cnxw4jyoqvgb" path="res://images/room.png" id="6_5n200"]
 [ext_resource type="Script" path="res://scenes/room.gd" id="7_88nyj"]
 [ext_resource type="PackedScene" uid="uid://dfg16hk4wplry" path="res://scenes/ui.tscn" id="8_fwsjg"]
+[ext_resource type="Texture2D" uid="uid://c7qgmdrblpkcq" path="res://images/ticker.png" id="8_mwupj"]
 [ext_resource type="AudioStream" uid="uid://blomaoj8aiesa" path="res://sounds/clock.mp3" id="9_mbgoq"]
+[ext_resource type="Script" path="res://scenes/clock_ticker.gd" id="9_u7udu"]
 [ext_resource type="AudioStream" uid="uid://f7nlic1qj27h" path="res://sounds/room.mp3" id="10_b1le7"]
 
 [node name="World" type="Node2D"]
+script = ExtResource("1_h2bln")
 
 [node name="Timer" type="Node" parent="."]
 script = ExtResource("1_80hco")
+
+[node name="Ticker" type="Sprite2D" parent="Timer"]
+position = Vector2(802, 564)
+scale = Vector2(0.132115, 0.259416)
+skew = -0.122173
+texture = ExtResource("8_mwupj")
+offset = Vector2(-18.8276, 70.8765)
+script = ExtResource("9_u7udu")
+
+[node name="Clock" type="AudioStreamPlayer2D" parent="Timer"]
+stream = ExtResource("9_mbgoq")
 
 [node name="GroceryManager" type="Node" parent="."]
 script = ExtResource("2_q07p0")
@@ -25,24 +39,18 @@ script = ExtResource("3_6f6ww")
 [node name="FlyerGenerator" type="Node" parent="."]
 script = ExtResource("5_o7idp")
 
-[node name="Control" parent="." instance=ExtResource("8_fwsjg")]
-
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 40.0
 offset_bottom = 40.0
-texture = ExtResource("6_e66jx")
+texture = ExtResource("6_5n200")
 script = ExtResource("7_88nyj")
 
-[node name="Clock" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(418, 695)
-scale = Vector2(0.193732, 0.193732)
-texture = ExtResource("7_48nr1")
-
-[node name="Clock2" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("9_mbgoq")
-autoplay = true
+[node name="Control" parent="." instance=ExtResource("8_fwsjg")]
 
 [node name="ambient" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("10_b1le7")
 autoplay = true
+
+[connection signal="time_feed" from="Timer" to="Timer/Ticker" method="_on_tick"]
+[connection signal="current_hour" from="Timer/Ticker" to="." method="_on_ticker_current_hour"]
+[connection signal="current_hour" from="Timer/Ticker" to="Timer/Ticker" method="_on_current_hour"]
