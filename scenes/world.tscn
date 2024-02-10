@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://scripts/flyer_generator.gd" id="5_o7idp"]
 [ext_resource type="Texture2D" uid="uid://rcnh8ot7v5n8" path="res://images/room.webp" id="6_e66jx"]
 [ext_resource type="Texture2D" uid="uid://btmg1fxk3g0jq" path="res://images/clock.png" id="7_48nr1"]
-[ext_resource type="Texture2D" uid="uid://du67iwe51d58y" path="res://images/flyer1.webp" id="8_ffr63"]
+[ext_resource type="Script" path="res://scenes/room.gd" id="7_88nyj"]
 [ext_resource type="PackedScene" uid="uid://dfg16hk4wplry" path="res://scenes/ui.tscn" id="8_fwsjg"]
 [ext_resource type="AudioStream" uid="uid://blomaoj8aiesa" path="res://sounds/clock.mp3" id="9_mbgoq"]
 [ext_resource type="AudioStream" uid="uid://f7nlic1qj27h" path="res://sounds/room.mp3" id="10_b1le7"]
@@ -31,17 +31,12 @@ script = ExtResource("5_o7idp")
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("6_e66jx")
+script = ExtResource("7_88nyj")
 
 [node name="Clock" type="Sprite2D" parent="."]
 position = Vector2(418, 695)
 scale = Vector2(0.193732, 0.193732)
 texture = ExtResource("7_48nr1")
-
-[node name="Flyer1" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(901, 845)
-scale = Vector2(0.342041, 0.342041)
-texture = ExtResource("8_ffr63")
 
 [node name="Clock2" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_mbgoq")

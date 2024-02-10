@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://dfg16hk4wplry"]
+[gd_scene load_steps=4 format=3 uid="uid://dfg16hk4wplry"]
 
 [ext_resource type="PackedScene" uid="uid://dl7y3rxhxsnlj" path="res://scenes/product.tscn" id="1_71jns"]
+[ext_resource type="Resource" uid="uid://y2rs3wjnjvwp" path="res://resources/cucumber.tres" id="2_q803l"]
+[ext_resource type="Resource" uid="uid://75hj1dw1ux0m" path="res://resources/juice.tres" id="3_4yfu0"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -38,9 +40,11 @@ color = Color(1, 0.129412, 0.215686, 1)
 
 [node name="Product2" parent="GridContainer/VBoxContainer/HBoxContainer" instance=ExtResource("1_71jns")]
 layout_mode = 2
+product_data = ExtResource("2_q803l")
 
 [node name="Product" parent="GridContainer/VBoxContainer" instance=ExtResource("1_71jns")]
 layout_mode = 2
+product_data = ExtResource("3_4yfu0")
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="GridContainer"]
 layout_mode = 2
