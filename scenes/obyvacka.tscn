@@ -30,20 +30,20 @@ shader_parameter/spookyness = 0.0
 [sub_resource type="Gradient" id="Gradient_su2qq"]
 colors = PackedColorArray(0.364706, 0.564706, 1, 1, 1, 1, 1, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_p3h4c"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_brvdl"]
 gradient = SubResource("Gradient_su2qq")
 
 [sub_resource type="Gradient" id="Gradient_3av2r"]
 colors = PackedColorArray(1, 0.733333, 0.556863, 1, 1, 1, 1, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_bbl07"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bbyoa"]
 gradient = SubResource("Gradient_3av2r")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k40cd"]
 shader = ExtResource("4_qw8er")
 shader_parameter/temperature = -0.1
-shader_parameter/warm_color = SubResource("GradientTexture1D_bbl07")
-shader_parameter/cool_color = SubResource("GradientTexture1D_p3h4c")
+shader_parameter/warm_color = SubResource("GradientTexture1D_bbyoa")
+shader_parameter/cool_color = SubResource("GradientTexture1D_brvdl")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fsog5"]
 shader = ExtResource("3_hhreh")
