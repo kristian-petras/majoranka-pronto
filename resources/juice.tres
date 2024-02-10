@@ -1,10 +1,8 @@
-[gd_resource type="Resource" script_class="ProductData" load_steps=3 format=3 uid="uid://75hj1dw1ux0m"]
+[gd_resource type="Resource" script_class="ProductData" load_steps=2 format=3 uid="uid://75hj1dw1ux0m"]
 
 [ext_resource type="Script" path="res://scripts/product_data.gd" id="1_48g0m"]
-[ext_resource type="Texture2D" uid="uid://ceu8jajoaw5v3" path="res://images/juice.webp" id="1_fdt4n"]
 
 [resource]
 script = ExtResource("1_48g0m")
 name = "dzusik"
-texture = ExtResource("1_fdt4n")
 price = 0
