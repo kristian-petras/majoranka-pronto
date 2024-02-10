@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ceu8jajoaw5v3"
-path="res://.godot/imported/juice.webp-ecd23eaafd3afd6ce9fb5718ab34d52c.ctex"
+uid="uid://bh61jb5131l01"
+path="res://.godot/imported/Zolpivir.webp-b678203d3b72abcf3e5675a1dde41006.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/juice.webp"
-dest_files=["res://.godot/imported/juice.webp-ecd23eaafd3afd6ce9fb5718ab34d52c.ctex"]
+source_file="res://images/medication/Zolpivir.webp"
+dest_files=["res://.godot/imported/Zolpivir.webp-b678203d3b72abcf3e5675a1dde41006.ctex"]
 
 [params]
 

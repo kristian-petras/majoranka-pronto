@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dltjch4nbl18m"
-path="res://.godot/imported/eggs.webp-2b32c39cc72a62bba6984978169ef620.ctex"
+uid="uid://c6xia8q8ewwbr"
+path="res://.godot/imported/Venastatin.webp-062c6cb4b83ca54294561fb0fe3d1afd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/eggs.webp"
-dest_files=["res://.godot/imported/eggs.webp-2b32c39cc72a62bba6984978169ef620.ctex"]
+source_file="res://images/medication/Venastatin.webp"
+dest_files=["res://.godot/imported/Venastatin.webp-062c6cb4b83ca54294561fb0fe3d1afd.ctex"]
 
 [params]
 

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ProductData" load_steps=3 format=3 uid="uid://dykeemoccrkjy"]
+
+[ext_resource type="Script" path="res://scripts/product_data.gd" id="1_2l2qi"]
+[ext_resource type="Texture2D" uid="uid://c1pb58ikn50se" path="res://images/food/bread.webp" id="2_7r12q"]
+
+[resource]
+script = ExtResource("1_2l2qi")
+name = "Bread"
+texture = ExtResource("2_7r12q")
+price = 0

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://j4xe4stujp5p"
-path="res://.godot/imported/cucumber.webp-bfa311ead6eb52637295869ca7e5144f.ctex"
+uid="uid://ds4w0d3i5d8pj"
+path="res://.godot/imported/Furoprazole.webp-701afbfb9a558e005c685123e0640556.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/cucumber.webp"
-dest_files=["res://.godot/imported/cucumber.webp-bfa311ead6eb52637295869ca7e5144f.ctex"]
+source_file="res://images/medication/Furoprazole.webp"
+dest_files=["res://.godot/imported/Furoprazole.webp-701afbfb9a558e005c685123e0640556.ctex"]
 
 [params]
 

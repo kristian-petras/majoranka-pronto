@@ -11,21 +11,21 @@ texture = ExtResource("3_ugiyj")
 price = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_t105y"]
-font_size = 20
+font_size = 13
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_a6yvg"]
-font_size = 24
+font_size = 10
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 
 [node name="Product" type="Control" node_paths=PackedStringArray("_product_image", "_product_name", "_product_price")]
-custom_minimum_size = Vector2(250, 250)
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 3
 anchors_preset = 0
-offset_right = 250.0
-offset_bottom = 250.0
+offset_right = 50.0
+offset_bottom = 50.0
 script = ExtResource("1_gkcbn")
 product_data = SubResource("Resource_yh6yp")
 _product_image = NodePath("Image")
@@ -33,22 +33,49 @@ _product_name = NodePath("Name")
 _product_price = NodePath("Price")
 
 [node name="Image" type="TextureRect" parent="."]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_ugiyj")
 
 [node name="Name" type="Label" parent="."]
-layout_mode = 0
-offset_left = 9.0
-offset_top = 86.0
-offset_right = 187.0
-offset_bottom = 114.0
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -89.0
+offset_top = -28.0
+offset_right = 89.0
+grow_horizontal = 2
+grow_vertical = 0
 text = "placeholder_name"
 label_settings = SubResource("LabelSettings_t105y")
+horizontal_alignment = 1
 
 [node name="Price" type="Label" parent="."]
-layout_mode = 0
-offset_left = 9.0
-offset_top = 113.0
-offset_right = 215.0
-offset_bottom = 147.0
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -103.0
+offset_top = -7.0
+offset_right = 103.0
+offset_bottom = 27.0
+grow_horizontal = 2
+grow_vertical = 0
 text = "placeholder_price"
 label_settings = SubResource("LabelSettings_a6yvg")
+horizontal_alignment = 1
