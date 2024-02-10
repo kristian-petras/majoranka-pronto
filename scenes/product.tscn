@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1ssjeq8ki1ho"]
+
+[ext_resource type="Script" path="res://scripts/product.gd" id="1_gkcbn"]
+[ext_resource type="Resource" uid="uid://y2rs3wjnjvwp" path="res://resources/cucumber.tres" id="2_44g0x"]
+[ext_resource type="Texture2D" uid="uid://d13w3m404w3yh" path="res://icon.svg" id="3_ugiyj"]
+
+[node name="Product" type="Node2D" node_paths=PackedStringArray("_product_image", "_product_name", "_product_price")]
+script = ExtResource("1_gkcbn")
+_product_data = ExtResource("2_44g0x")
+_product_image = NodePath("Image")
+_product_name = NodePath("Name")
+_product_price = NodePath("Price")
+
+[node name="Image" type="Sprite2D" parent="."]
+texture = ExtResource("3_ugiyj")
+
+[node name="Name" type="Label" parent="."]
+offset_left = 68.0
+offset_top = 10.0
+offset_right = 211.0
+offset_bottom = 33.0
+text = "placeholder_name"
+
+[node name="Price" type="Label" parent="."]
+offset_left = 67.0
+offset_top = 60.0
+offset_right = 204.0
+offset_bottom = 83.0
+text = "placeholder_price"

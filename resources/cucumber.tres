@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ProductData" load_steps=3 format=3 uid="uid://y2rs3wjnjvwp"]
+
+[ext_resource type="Texture2D" uid="uid://j4xe4stujp5p" path="res://images/cucumber.webp" id="1_xt48y"]
+[ext_resource type="Script" path="res://scripts/product_data.gd" id="2_gm7nt"]
+
+[resource]
+script = ExtResource("2_gm7nt")
+name = "Okurka hadovka"
+image = ExtResource("1_xt48y")
+price = 1799
