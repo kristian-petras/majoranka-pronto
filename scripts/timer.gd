@@ -1,6 +1,6 @@
 extends Node
 
-signal time_feed(counter)
+signal time_feed(counter: int)
 
 var _timer = false
 var _ticks = 0
