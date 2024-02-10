@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c7lnqmdi1xql8"]
 
-[ext_resource type="Script" path="res://scripts/time.gd" id="1_80hco"]
+[ext_resource type="Script" path="res://scripts/timer.gd" id="1_80hco"]
 
 [node name="World" type="Node2D"]
 
