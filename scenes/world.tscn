@@ -34,6 +34,7 @@ texture = ExtResource("6_e66jx")
 script = ExtResource("7_88nyj")
 
 [node name="Clock" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(418, 695)
 scale = Vector2(0.193732, 0.193732)
 texture = ExtResource("7_48nr1")

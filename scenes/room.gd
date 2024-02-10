@@ -1,7 +1,7 @@
 extends TextureRect
 
 var image1 = preload("res://images/room.webp")
-var image2 = preload("res://images/room2.webp")
+var image2 = preload("res://images/room.png")
 
 var current_image = 1
 
