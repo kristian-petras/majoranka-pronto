@@ -1,14 +1,15 @@
 [gd_scene load_steps=6 format=3 uid="uid://c73jnjw8lefff"]
 
 [ext_resource type="Script" path="res://scripts/magnifying_glass.gd" id="1_sg7nn"]
-[ext_resource type="Shader" path="res://scenes/magnifying_glass.gdshader" id="2_ydi4p"]
+[ext_resource type="Shader" path="res://shaders/magnifying_glass.gdshader" id="2_ydi4p"]
 [ext_resource type="Texture2D" uid="uid://d13w3m404w3yh" path="res://icon.svg" id="3_o7w0r"]
 [ext_resource type="Texture2D" uid="uid://bs60kywmljciw" path="res://code-example.png" id="4_yn5ox"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tyxm3"]
 shader = ExtResource("2_ydi4p")
 shader_parameter/target = Vector2(0.5, 0.5)
-shader_parameter/lod = 3.345
+shader_parameter/strength_low = 2.0
+shader_parameter/strength_high = 6.0
 shader_parameter/radius = 108.784
 shader_parameter/zoom = 0.7
 
