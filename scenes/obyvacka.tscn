@@ -1,21 +1,49 @@
-[gd_scene load_steps=11 format=3 uid="uid://bgoa3ybtkia1r"]
+[gd_scene load_steps=23 format=3 uid="uid://bgoa3ybtkia1r"]
 
 [ext_resource type="Script" path="res://scripts/magnifying_glass.gd" id="1_eamb5"]
+[ext_resource type="Shader" path="res://scenes/spooky.gdshader" id="3_f8r7w"]
 [ext_resource type="Texture2D" uid="uid://d13w3m404w3yh" path="res://icon.svg" id="3_fxfe3"]
 [ext_resource type="Shader" path="res://shaders/magnifying_glass_local.gdshader" id="3_hhreh"]
 [ext_resource type="Script" path="res://scripts/preview_manager.gd" id="4_5nd3g"]
 [ext_resource type="Script" path="res://scripts/clickable_area.gd" id="4_pc2qi"]
+[ext_resource type="Shader" path="res://scenes/white-balance.gdshader" id="4_qw8er"]
 [ext_resource type="Texture2D" uid="uid://cnxw4jyoqvgb" path="res://images/room.png" id="4_shr20"]
 [ext_resource type="Shader" path="res://shaders/magnifying_glass.gdshader" id="5_edfwg"]
 [ext_resource type="Texture2D" uid="uid://bs60kywmljciw" path="res://code-example.png" id="7_5dk3s"]
+[ext_resource type="Script" path="res://scripts/timer.gd" id="9_120wi"]
+[ext_resource type="Texture2D" uid="uid://c7qgmdrblpkcq" path="res://images/ticker.png" id="10_5ga3j"]
+[ext_resource type="Script" path="res://scenes/clock_ticker.gd" id="11_ivjjg"]
+[ext_resource type="AudioStream" uid="uid://blomaoj8aiesa" path="res://sounds/clock.mp3" id="12_31ytg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_l5601"]
 shader = ExtResource("5_edfwg")
 shader_parameter/target = Vector2(0.5, 0.5)
-shader_parameter/strength_low = 2.0
+shader_parameter/strength_low = 1.0
 shader_parameter/strength_high = 4.0
 shader_parameter/radius = 108.784
 shader_parameter/zoom = 0.7
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q7pnt"]
+shader = ExtResource("3_f8r7w")
+shader_parameter/spookyness = 0.0
+
+[sub_resource type="Gradient" id="Gradient_su2qq"]
+colors = PackedColorArray(0.364706, 0.564706, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_p3h4c"]
+gradient = SubResource("Gradient_su2qq")
+
+[sub_resource type="Gradient" id="Gradient_3av2r"]
+colors = PackedColorArray(1, 0.733333, 0.556863, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bbl07"]
+gradient = SubResource("Gradient_3av2r")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k40cd"]
+shader = ExtResource("4_qw8er")
+shader_parameter/temperature = -0.1
+shader_parameter/warm_color = SubResource("GradientTexture1D_bbl07")
+shader_parameter/cool_color = SubResource("GradientTexture1D_p3h4c")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fsog5"]
 shader = ExtResource("3_hhreh")
@@ -39,19 +67,29 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="CanvasLayer2" type="CanvasLayer" parent="Camera2D"]
+
+[node name="ColorRect2" type="ColorRect" parent="Camera2D/CanvasLayer2"]
+material = SubResource("ShaderMaterial_q7pnt")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer3" type="CanvasLayer" parent="Camera2D"]
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D/CanvasLayer3"]
+material = SubResource("ShaderMaterial_k40cd")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="Room" type="Sprite2D" parent="."]
 position = Vector2(514, 516)
 texture = ExtResource("4_shr20")
-
-[node name="Node2D" type="Node2D" parent="."]
-visible = false
-
-[node name="banan" type="Sprite2D" parent="Node2D"]
-position = Vector2(72, 60)
-texture = ExtResource("3_fxfe3")
-
-[node name="jahoda" type="Sprite2D" parent="Node2D"]
-texture = ExtResource("3_fxfe3")
 
 [node name="PreviewManager" type="Node2D" parent="."]
 script = ExtResource("4_5nd3g")
@@ -64,12 +102,30 @@ scale = Vector2(1.1566, 1.46106)
 texture = ExtResource("3_fxfe3")
 script = ExtResource("4_pc2qi")
 id = "click2"
-nodeToPreview = NodePath("../Code-example")
+nodeToPreview = NodePath("../letak-open")
 previewManager = NodePath("../PreviewManager")
 
-[node name="Code-example" type="Sprite2D" parent="."]
+[node name="letak-open" type="Sprite2D" parent="."]
 visible = false
 material = SubResource("ShaderMaterial_fsog5")
 position = Vector2(515, 512)
 scale = Vector2(1.305, 1.305)
 texture = ExtResource("7_5dk3s")
+
+[node name="Timer" type="Node" parent="."]
+script = ExtResource("9_120wi")
+
+[node name="Ticker" type="Sprite2D" parent="Timer"]
+position = Vector2(802, 564)
+scale = Vector2(0.132115, 0.259416)
+skew = -0.122173
+texture = ExtResource("10_5ga3j")
+offset = Vector2(-18.8276, 70.8765)
+script = ExtResource("11_ivjjg")
+
+[node name="Clock" type="AudioStreamPlayer2D" parent="Timer"]
+stream = ExtResource("12_31ytg")
+
+[connection signal="time_feed" from="Timer" to="Timer/Ticker" method="_on_tick"]
+[connection signal="current_hour" from="Timer/Ticker" to="." method="_on_ticker_current_hour"]
+[connection signal="current_hour" from="Timer/Ticker" to="Timer/Ticker" method="_on_current_hour"]
