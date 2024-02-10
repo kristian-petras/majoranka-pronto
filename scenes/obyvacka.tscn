@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://bgoa3ybtkia1r"]
+
+[ext_resource type="Texture2D" uid="uid://b3qdfiutarp7v" path="res://images/table.png" id="1_lhyal"]
+[ext_resource type="Texture2D" uid="uid://d13w3m404w3yh" path="res://icon.svg" id="3_fxfe3"]
+[ext_resource type="Script" path="res://scripts/preview_manager.gd" id="4_5nd3g"]
+[ext_resource type="Script" path="res://scripts/clickable_area.gd" id="4_pc2qi"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Table" type="Sprite2D" parent="."]
+position = Vector2(559, 413)
+texture = ExtResource("1_lhyal")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="banan" type="Sprite2D" parent="Node2D"]
+position = Vector2(72, 60)
+texture = ExtResource("3_fxfe3")
+
+[node name="jahoda" type="Sprite2D" parent="Node2D"]
+texture = ExtResource("3_fxfe3")
+
+[node name="PreviewManager" type="Node2D" parent="."]
+script = ExtResource("4_5nd3g")
+
+[node name="clickable1" type="Sprite2D" parent="." node_paths=PackedStringArray("nodeToPreview", "previewManager")]
+position = Vector2(422, 309)
+texture = ExtResource("3_fxfe3")
+script = ExtResource("4_pc2qi")
+id = "clck1"
+nodeToPreview = NodePath("../Node2D")
+previewManager = NodePath("../PreviewManager")
+
+[node name="clickable2" type="Sprite2D" parent="." node_paths=PackedStringArray("nodeToPreview", "previewManager")]
+position = Vector2(683, 302)
+rotation = -0.689405
+texture = ExtResource("3_fxfe3")
+script = ExtResource("4_pc2qi")
+id = "click2"
+nodeToPreview = NodePath("../Node2D")
+previewManager = NodePath("../PreviewManager")
