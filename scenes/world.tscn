@@ -370,6 +370,7 @@ libraries = {
 "": SubResource("AnimationLibrary_tc0x7")
 }
 
+[connection signal="animation_finished" from="Camera2D/CanvasLayer3/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="clicked_product" from="Camera2D/CanvasLayer/Flyer/Control" to="." method="_on_clicked_product"]
 [connection signal="selected_products" from="Camera2D/CanvasLayer/Flyer/Control" to="." method="_on_control_selected_products"]
 [connection signal="selected_products" from="Camera2D/CanvasLayer/Flyer/Control" to="Camera2D/CanvasLayer/ListNear/Label" method="_on_control_selected_products"]
