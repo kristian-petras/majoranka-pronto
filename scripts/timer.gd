@@ -5,6 +5,7 @@ signal time_feed(counter: int)
 var _timer = false
 var _ticks = 0
 var _counter = 0
+var time_spent = 0
 
 func start_time():
 	print("Game time - started, counter: %s" % _counter)
@@ -17,6 +18,7 @@ func stop_time():
 func _process(delta):
 	if _timer:
 		_ticks += delta
+		time_spent += delta
 	if _ticks > 1:
 		_ticks = 0
 		time_feed.emit(_counter)

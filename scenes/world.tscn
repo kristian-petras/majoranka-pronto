@@ -155,16 +155,17 @@ _data = {
 "scene_transition": SubResource("Animation_321fb")
 }
 
-[node name="World" type="Node2D" node_paths=PackedStringArray("objective", "ambient", "chakra_player")]
+[node name="World" type="Node2D" node_paths=PackedStringArray("objective", "ambient", "turn_off_after_win", "chakra_player")]
 script = ExtResource("1_h2bln")
 objective = NodePath("Camera2D/CanvasLayer/ListNear/Label")
-number_of_objectives = 8
+number_of_objectives = 1
 chakra_sounds = Array[AudioStream]([ExtResource("2_8j7rn"), ExtResource("3_o60eh"), ExtResource("4_gwg1u"), ExtResource("5_87jb1"), ExtResource("6_6vool"), ExtResource("7_88fol"), ExtResource("8_8o6ud"), ExtResource("9_g3jgt")])
 endgame = ExtResource("10_th55q")
 ambient = NodePath("ambient")
 game_over_laugh = ExtResource("11_8b04f")
 game_over_win = ExtResource("12_dmp7d")
 growl = ExtResource("13_8tf3f")
+turn_off_after_win = NodePath("Camera2D/CanvasLayer/Flyer/Control")
 chakra_player = NodePath("chakra")
 
 [node name="chakra" type="AudioStreamPlayer" parent="."]

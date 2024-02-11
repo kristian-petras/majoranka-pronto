@@ -18,6 +18,8 @@ var objective_products = []
 @export var game_over_win: AudioStream
 @export var growl: AudioStream
 
+@export var turn_off_after_win: Control
+
 var clicked_products = []
 
 func _on_ticker_current_hour(hour):
@@ -35,12 +37,13 @@ func _on_game_start():
 	clock.play()
 
 func game_end(evil):
+	turn_off_after_win.visible = false
 	_timer.stop_time()
 	ap.play("fade_to_black")
 	clock_player.stop()
 	ambient.stop()
 	if clicked_products == objective_products:
-		game_over_text.text = "You have successfully ordered your medicine."
+		game_over_text.text = "You have successfully ordered your medicine in %.2f seconds." % _timer.time_spent
 		ambient.stream = game_over_win
 		ambient.play()
 	else:	
