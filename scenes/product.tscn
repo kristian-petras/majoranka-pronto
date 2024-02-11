@@ -1,8 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://dl7y3rxhxsnlj"]
+[gd_scene load_steps=14 format=3 uid="uid://dl7y3rxhxsnlj"]
 
 [ext_resource type="Script" path="res://scenes/product.gd" id="1_nlkxe"]
+[ext_resource type="Texture2D" uid="uid://dhlbxblkt2tth" path="res://images/medication/Alpramycin.webp" id="2_0yhjy"]
 [ext_resource type="Script" path="res://scenes/TextureButton.gd" id="3_cunj0"]
 [ext_resource type="Texture2D" uid="uid://d13w3m404w3yh" path="res://icon.svg" id="4_lmeek"]
+[ext_resource type="Texture2D" uid="uid://c3b8ky0gjuhyt" path="res://images/6-grunge-cross-1.png" id="6_jedek"]
+[ext_resource type="Script" path="res://scenes/click_rotate.gd" id="6_v6rb7"]
+[ext_resource type="Texture2D" uid="uid://cx3318k2gipi4" path="res://images/6-grunge-cross-2.png" id="7_v3rfq"]
+[ext_resource type="Texture2D" uid="uid://dmhoptacxsbxe" path="res://images/6-grunge-cross-3.png" id="8_lbwrj"]
+[ext_resource type="Texture2D" uid="uid://bv6rtj7d3eawg" path="res://images/6-grunge-cross-4.png" id="9_oxga3"]
+[ext_resource type="Texture2D" uid="uid://fstu265mwgm1" path="res://images/6-grunge-cross-5.png" id="10_t6nke"]
+[ext_resource type="Texture2D" uid="uid://1ovxdgvs5ilu" path="res://images/6-grunge-cross-6.png" id="11_yxjt1"]
 
 [sub_resource type="SystemFont" id="SystemFont_letjo"]
 font_names = PackedStringArray("Comic Sans MS")
@@ -35,9 +43,17 @@ product_button = NodePath("TextureButton2")
 layout_mode = 0
 offset_right = 128.0
 offset_bottom = 128.0
-texture_normal = ExtResource("4_lmeek")
+texture_normal = ExtResource("2_0yhjy")
 texture_disabled = ExtResource("4_lmeek")
 script = ExtResource("3_cunj0")
+
+[node name="click" type="Sprite2D" parent="TextureButton2"]
+visible = false
+position = Vector2(510, 513)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("6_jedek")
+script = ExtResource("6_v6rb7")
+variants = Array[Texture2D]([ExtResource("6_jedek"), ExtResource("7_v3rfq"), ExtResource("8_lbwrj"), ExtResource("9_oxga3"), ExtResource("10_t6nke"), ExtResource("11_yxjt1")])
 
 [node name="Name" type="Label" parent="."]
 layout_mode = 1

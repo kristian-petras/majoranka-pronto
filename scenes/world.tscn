@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://c7lnqmdi1xql8"]
+[gd_scene load_steps=38 format=3 uid="uid://c7lnqmdi1xql8"]
 
 [ext_resource type="Script" path="res://scripts/timer.gd" id="1_80hco"]
 [ext_resource type="Script" path="res://scenes/game_manager.gd" id="1_h2bln"]
@@ -21,6 +21,8 @@
 [ext_resource type="Script" path="res://scenes/clock_ticker.gd" id="9_u7udu"]
 [ext_resource type="AudioStream" uid="uid://f7nlic1qj27h" path="res://sounds/room.mp3" id="10_b1le7"]
 [ext_resource type="AudioStream" uid="uid://duoasca7yeto4" path="res://sounds/church.mp3" id="10_th55q"]
+[ext_resource type="AudioStream" uid="uid://c64sen8yltsu4" path="res://sounds/laugh.mp3" id="11_8b04f"]
+[ext_resource type="AudioStream" uid="uid://cwhl5yx7e8ws7" path="res://sounds/corridor.mp3" id="12_dmp7d"]
 [ext_resource type="Texture2D" uid="uid://d13w3m404w3yh" path="res://icon.svg" id="15_7b815"]
 [ext_resource type="Script" path="res://scripts/clickable_area.gd" id="16_hbrjc"]
 [ext_resource type="Shader" path="res://shaders/magnifying_glass_local.gdshader" id="17_1w40i"]
@@ -95,6 +97,8 @@ number_of_objectives = 3
 chakra_sounds = Array[AudioStream]([ExtResource("2_8j7rn"), ExtResource("3_o60eh"), ExtResource("4_gwg1u"), ExtResource("5_87jb1"), ExtResource("6_6vool"), ExtResource("7_88fol"), ExtResource("8_8o6ud"), ExtResource("9_g3jgt")])
 endgame = ExtResource("10_th55q")
 ambient = NodePath("ambient")
+game_over_laugh = ExtResource("11_8b04f")
+game_over_win = ExtResource("12_dmp7d")
 chakra_player = NodePath("chakra")
 
 [node name="chakra" type="AudioStreamPlayer" parent="."]

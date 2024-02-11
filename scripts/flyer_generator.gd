@@ -60,12 +60,13 @@ func _load_product(base_path, filename):
 	var texture = load(pathToTexture)
 	if !texture:
 		return null
-	
+	var name = filename.split(".")[0]
 	var product = _product_scene.instantiate()
 	product.product_button.scale = Vector2(0.1,0.1)
 	product.product_button.texture_normal = texture
+	product.name = name
 	product.test.connect(okej_bumer)
-	product.product_name.text = filename.split(".")[0]
+	product.product_name.text = name
 
 	return product
 

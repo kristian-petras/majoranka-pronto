@@ -14,6 +14,9 @@ var objective_products = []
 @onready var ap = $Camera2D/CanvasLayer3/AnimationPlayer
 @onready var game_over_text = $Camera2D/CanvasLayer3/Label
 
+@export var game_over_laugh: AudioStream
+@export var game_over_win: AudioStream
+
 var clicked_products = []
 
 func _on_ticker_current_hour(hour):
@@ -30,14 +33,22 @@ func _on_game_start():
 func game_end():
 	_timer.stop_time()
 	ap.play("fade_to_black")
-	chakra_player.stream = endgame
 	clock_player.stop()
 	ambient.stop()
-	chakra_player.play()
+	if clicked_products == objective_products:
+		game_over_text.text = "You have successfully ordered your medicine."
+		ambient.stream = game_over_win
+		ambient.play()
+	else:	
+		chakra_player.stream = endgame
+		chakra_player.play()
+		ambient.stream = game_over_laugh
+		ambient.play()
+		game_over_text.text = "You did not manage to order your medicine in time."
 	game_over_text.visible = true
 	print("game_end")
 
-const magnifyingRadius: float = 200.0;
+var magnifyingRadius: float = 200.0;
 const zoom: float = 0.5; # between 0 and 1; 1 means no zoom and the lower you go the bigger the zoom
 
 var spookyness = 0;
@@ -81,20 +92,37 @@ func _on_control_selected_products(products):
 
 @export var chakra_player: AudioStreamPlayer
 
+
+@onready var product_control = $Camera2D/CanvasLayer/Flyer/Control/GridContainer
+var product_children = []
+var initialized = false
+
 func _on_clicked_product(product):
+	if !initialized:
+		product_children.append_array(product_control.get_children())
+		initialized = true
 	if product in clicked_products:
 		if product in objective_products:
 			print("cannot remove objective product " + product)
 		else:
+			for p in product_children:
+				if p.name == product:
+					p.get_child(0).get_child(0).visible = false
 			print("removed product " + product)
 			clicked_products.erase(product)
 	else:
+		for p in product_children:
+			if p.name == product:
+				p.get_child(0).get_child(0).visible = true
 		print("added product " + product)
 		clicked_products.append(product)
 		if product in objective_products:
 			chakra_player.stream = chakra_sounds[clicked_objective_products]
 			chakra_player.play()
 			clicked_objective_products += 1
+		else:
+			magnifyingRadius = max(20, magnifyingRadius - 20)	
+			$Camera2D/CanvasLayer/BackgroundBlur.get_material().set_shader_parameter("radius", magnifyingRadius);
 	clicked_products.sort()
 	print()
 	print("Clicked products: ")
