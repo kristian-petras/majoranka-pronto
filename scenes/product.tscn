@@ -13,7 +13,7 @@ font_size = 11
 outline_size = 8
 outline_color = Color(0, 0, 0, 1)
 
-[node name="Product" type="Control" node_paths=PackedStringArray("product_image", "product_name", "product_button")]
+[node name="Product" type="Control" node_paths=PackedStringArray("product_name", "product_button")]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 3
 anchors_preset = 8
@@ -28,7 +28,6 @@ offset_bottom = -412.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_nlkxe")
-product_image = NodePath("")
 product_name = NodePath("Name")
 product_button = NodePath("TextureButton2")
 
