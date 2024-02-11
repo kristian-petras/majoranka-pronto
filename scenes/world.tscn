@@ -1,8 +1,9 @@
-[gd_scene load_steps=25 format=3 uid="uid://c7lnqmdi1xql8"]
+[gd_scene load_steps=26 format=3 uid="uid://c7lnqmdi1xql8"]
 
 [ext_resource type="Script" path="res://scripts/timer.gd" id="1_80hco"]
 [ext_resource type="Script" path="res://scenes/game_manager.gd" id="1_h2bln"]
 [ext_resource type="Shader" path="res://shaders/magnifying_glass.gdshader" id="2_um7u2"]
+[ext_resource type="Texture2D" uid="uid://dqihjs3hm0upq" path="res://images/list.png" id="3_i0jfi"]
 [ext_resource type="Shader" path="res://scenes/spooky.gdshader" id="3_k28m4"]
 [ext_resource type="Shader" path="res://scenes/white-balance.gdshader" id="4_kk2qa"]
 [ext_resource type="Texture2D" uid="uid://cnxw4jyoqvgb" path="res://images/room.png" id="6_5n200"]
@@ -11,10 +12,10 @@
 [ext_resource type="AudioStream" uid="uid://blomaoj8aiesa" path="res://sounds/clock.mp3" id="9_mbgoq"]
 [ext_resource type="Script" path="res://scenes/clock_ticker.gd" id="9_u7udu"]
 [ext_resource type="AudioStream" uid="uid://f7nlic1qj27h" path="res://sounds/room.mp3" id="10_b1le7"]
-[ext_resource type="Texture2D" uid="uid://d13w3m404w3yh" path="res://icon.svg" id="15_7b815"]
 [ext_resource type="Script" path="res://scripts/clickable_area.gd" id="16_hbrjc"]
 [ext_resource type="Shader" path="res://shaders/magnifying_glass_local.gdshader" id="17_1w40i"]
 [ext_resource type="Texture2D" uid="uid://bs60kywmljciw" path="res://code-example.png" id="18_1i2a7"]
+[ext_resource type="Texture2D" uid="uid://hg5wcqy86wd3" path="res://images/list_near.png" id="18_mak23"]
 [ext_resource type="Script" path="res://scripts/preview_manager.gd" id="19_80vbw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_i3nq1"]
@@ -64,6 +65,19 @@ autoplay = true
 position = Vector2(512, 512)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+
+[node name="List" type="Sprite2D" parent="Camera2D/CanvasLayer" node_paths=PackedStringArray("nodeToPreview", "previewManager")]
+position = Vector2(200, 845)
+texture = ExtResource("3_i0jfi")
+script = ExtResource("16_hbrjc")
+id = "list"
+nodeToPreview = NodePath("../ListNear")
+previewManager = NodePath("../../../PreviewManager")
+
+[node name="ListNear" type="Sprite2D" parent="Camera2D/CanvasLayer"]
+visible = false
+position = Vector2(525, 488)
+texture = ExtResource("18_mak23")
 
 [node name="Flyer" type="Node2D" parent="Camera2D/CanvasLayer"]
 visible = false
@@ -136,7 +150,6 @@ visible = false
 position = Vector2(497, 844)
 rotation = -0.102901
 scale = Vector2(1.1566, 1.46106)
-texture = ExtResource("15_7b815")
 script = ExtResource("16_hbrjc")
 id = "click2"
 nodeToPreview = NodePath("../Camera2D/CanvasLayer/Flyer")

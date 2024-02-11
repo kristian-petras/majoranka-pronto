@@ -6,6 +6,7 @@ var node_holding_preview: ClickableArea = null
 func _input(event):		
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_RIGHT:
 		_release_lock()
+		
 
 func try_lock_preview(opened_node: ClickableArea):
 	print("try lock")

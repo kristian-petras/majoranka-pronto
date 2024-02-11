@@ -18,6 +18,8 @@ func _input(event):
 			print("showing preview of %s" % id)
 			nodeToPreview.visible = true
 			nodeToPreview.top_level = true
+			visible = false
 
 func close_preview():
+	visible = true
 	nodeToPreview.visible = false
