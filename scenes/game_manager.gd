@@ -173,5 +173,5 @@ func _input(event):
 			get_tree().reload_current_scene()
 
 func _on_animation_player_animation_finished(anim_name):
-	if anim_name == "fade_to_black":
+	if anim_name == "fade_to_black" or anim_name == "transition_back":
 		is_game_over = true
