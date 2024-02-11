@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://c7lnqmdi1xql8"]
+[gd_scene load_steps=45 format=3 uid="uid://c7lnqmdi1xql8"]
 
 [ext_resource type="Script" path="res://scripts/timer.gd" id="1_80hco"]
 [ext_resource type="Script" path="res://scenes/game_manager.gd" id="1_h2bln"]
@@ -22,6 +22,7 @@
 [ext_resource type="AudioStream" uid="uid://duoasca7yeto4" path="res://sounds/church.mp3" id="10_th55q"]
 [ext_resource type="AudioStream" uid="uid://c64sen8yltsu4" path="res://sounds/laugh.mp3" id="11_8b04f"]
 [ext_resource type="AudioStream" uid="uid://cwhl5yx7e8ws7" path="res://sounds/corridor.mp3" id="12_dmp7d"]
+[ext_resource type="AudioStream" uid="uid://ciwomyx7y5jvn" path="res://sounds/growl.mp3" id="13_8tf3f"]
 [ext_resource type="Texture2D" uid="uid://d13w3m404w3yh" path="res://icon.svg" id="15_7b815"]
 [ext_resource type="Script" path="res://scripts/clickable_area.gd" id="16_hbrjc"]
 [ext_resource type="Shader" path="res://shaders/magnifying_glass_local.gdshader" id="17_1w40i"]
@@ -163,6 +164,7 @@ endgame = ExtResource("10_th55q")
 ambient = NodePath("ambient")
 game_over_laugh = ExtResource("11_8b04f")
 game_over_win = ExtResource("12_dmp7d")
+growl = ExtResource("13_8tf3f")
 chakra_player = NodePath("chakra")
 
 [node name="chakra" type="AudioStreamPlayer" parent="."]

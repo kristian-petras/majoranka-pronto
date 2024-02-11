@@ -16,6 +16,7 @@ var objective_products = []
 
 @export var game_over_laugh: AudioStream
 @export var game_over_win: AudioStream
+@export var growl: AudioStream
 
 var clicked_products = []
 
@@ -120,6 +121,9 @@ func _on_clicked_product(product):
 			chakra_player.play()
 			clicked_objective_products += 1
 		else:
+			spookyness += 1
+			chakra_player.stream = growl
+			chakra_player.play()
 			magnifyingRadius = max(20, magnifyingRadius - 20)
 			if magnifyingRadius == 20:
 				game_end(true)
