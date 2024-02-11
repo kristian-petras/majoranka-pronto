@@ -312,6 +312,7 @@ script = ExtResource("1_80hco")
 [node name="Ticker" type="Sprite2D" parent="Timer"]
 z_index = -1
 position = Vector2(802, 564)
+rotation = 3.14159
 scale = Vector2(0.132115, 0.259416)
 skew = -0.122173
 texture = ExtResource("8_mwupj")
