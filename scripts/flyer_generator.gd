@@ -27,6 +27,8 @@ func dir_contents(path):
 						var product = _product_scene.instantiate()
 						product.product_image.texture = texture
 						product.product_image.scale = Vector2(0.1,0.1)
+						product.product_button.scale = Vector2(0.1,0.1)
+						product.product_button.texture_normal = texture
 						product.product_name.text = file_name.split(".")[0]
 						products.append(product)
 					else:
