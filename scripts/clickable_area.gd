@@ -2,11 +2,9 @@ class_name ClickableArea
 extends Sprite2D
 
 @export var id = "koko";
-@export var nodeToPreview: Control;
+@export var nodeToPreview: Node2D;
 
 @export var previewManager: PreviewManager;
-
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
