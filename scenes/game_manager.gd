@@ -20,6 +20,12 @@ var objective_products = []
 
 @export var turn_off_after_win: Control
 
+@export var turn_off_as_well: Array[Node2D]
+
+@export var turn_off_on_win: Array[CanvasLayer]
+
+@export var demon: Sprite2D
+
 var clicked_products = []
 
 func _on_ticker_current_hour(hour):
@@ -38,15 +44,22 @@ func _on_game_start():
 
 func game_end(evil):
 	turn_off_after_win.visible = false
+	for i in turn_off_as_well:
+		i.visible = false
 	_timer.stop_time()
-	ap.play("fade_to_black")
 	clock_player.stop()
 	ambient.stop()
 	if clicked_products == objective_products:
+		for i in turn_off_on_win:
+			i.visible = false
 		game_over_text.text = "You have successfully ordered your medicine in %.2f seconds." % _timer.time_spent
 		ambient.stream = game_over_win
 		ambient.play()
-	else:	
+		game_over_text.label_settings.font_size = 32
+		
+		ap.play("transition_back")
+	else:		
+		ap.play("fade_to_black")
 		chakra_player.stream = endgame
 		chakra_player.play()
 		ambient.stream = game_over_laugh

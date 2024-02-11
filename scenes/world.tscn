@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://c7lnqmdi1xql8"]
+[gd_scene load_steps=44 format=3 uid="uid://c7lnqmdi1xql8"]
 
 [ext_resource type="Script" path="res://scripts/timer.gd" id="1_80hco"]
 [ext_resource type="Script" path="res://scenes/game_manager.gd" id="1_h2bln"]
@@ -16,7 +16,6 @@
 [ext_resource type="Texture2D" uid="uid://c7qgmdrblpkcq" path="res://images/ticker.png" id="8_mwupj"]
 [ext_resource type="Shader" path="res://shaders/magnifying_glass_web.gdshader" id="8_x5k1t"]
 [ext_resource type="AudioStream" uid="uid://c3aj2cdjhcklc" path="res://sounds/chakra-8.mp3" id="9_g3jgt"]
-[ext_resource type="Shader" path="res://shaders/magnifying_glass_web.gdshader" id="8_x5k1t"]
 [ext_resource type="AudioStream" uid="uid://blomaoj8aiesa" path="res://sounds/clock.mp3" id="9_mbgoq"]
 [ext_resource type="Script" path="res://scenes/clock_ticker.gd" id="9_u7udu"]
 [ext_resource type="AudioStream" uid="uid://f7nlic1qj27h" path="res://sounds/room.mp3" id="10_b1le7"]
@@ -34,23 +33,6 @@
 [ext_resource type="Script" path="res://scenes/glass_init.gd" id="32_nfjsx"]
 [ext_resource type="Texture2D" uid="uid://cs1pa0cn58o4s" path="res://images/demon.png" id="33_fqihi"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_3vj61"]
-line_spacing = 30.0
-font = ExtResource("6_5o0av")
-font_color = Color(0.137255, 0.137255, 0.137255, 1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_i3nq1"]
-shader = ExtResource("8_x5k1t")
-shader_parameter/target = Vector2(0.5, 0.5)
-shader_parameter/strength_low = 5.0
-shader_parameter/strength_high = 18.0
-shader_parameter/radius = 108.784
-shader_parameter/zoom = 0.7
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_i4u70"]
-shader = ExtResource("3_k28m4")
-shader_parameter/spookyness = 0.0
-
 [sub_resource type="Animation" id="Animation_ohb5o"]
 length = 0.001
 tracks/0/type = "value"
@@ -60,6 +42,18 @@ tracks/0/path = NodePath("ColorRect:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Demon:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -81,11 +75,49 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 0), Color(0, 0, 0, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_witbu"]
+resource_name = "transition_back"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Demon:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_v7kk7"]
 _data = {
 "RESET": SubResource("Animation_ohb5o"),
-"fade_to_black": SubResource("Animation_dlp3g")
+"fade_to_black": SubResource("Animation_dlp3g"),
+"transition_back": SubResource("Animation_witbu")
 }
+
+[sub_resource type="LabelSettings" id="LabelSettings_yqb65"]
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3vj61"]
+line_spacing = 30.0
+font = ExtResource("6_5o0av")
+font_color = Color(0.137255, 0.137255, 0.137255, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i3nq1"]
+shader = ExtResource("8_x5k1t")
+shader_parameter/target = Vector2(0.5, 0.5)
+shader_parameter/strength_low = 5.0
+shader_parameter/strength_high = 18.0
+shader_parameter/radius = 108.784
+shader_parameter/zoom = 0.7
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i4u70"]
+shader = ExtResource("3_k28m4")
+shader_parameter/spookyness = 0.0
 
 [sub_resource type="Animation" id="Animation_kv4yp"]
 length = 0.001
@@ -104,7 +136,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Demon:modulate")
+tracks/1/path = NodePath("../Camera2D/CanvasLayer3/Demon:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -132,7 +164,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Demon:modulate")
+tracks/1/path = NodePath("../Camera2D/CanvasLayer3/Demon:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -148,10 +180,10 @@ _data = {
 "scene_transition": SubResource("Animation_321fb")
 }
 
-[node name="World" type="Node2D" node_paths=PackedStringArray("objective", "ambient", "turn_off_after_win", "chakra_player")]
+[node name="World" type="Node2D" node_paths=PackedStringArray("objective", "ambient", "turn_off_after_win", "turn_off_as_well", "turn_off_on_win", "demon", "chakra_player")]
 script = ExtResource("1_h2bln")
 objective = NodePath("Camera2D/CanvasLayer/ListNear/Label")
-number_of_objectives = 1
+number_of_objectives = 8
 chakra_sounds = Array[AudioStream]([ExtResource("2_8j7rn"), ExtResource("3_o60eh"), ExtResource("4_gwg1u"), ExtResource("5_87jb1"), ExtResource("6_6vool"), ExtResource("7_88fol"), ExtResource("8_8o6ud"), ExtResource("9_g3jgt")])
 endgame = ExtResource("10_th55q")
 ambient = NodePath("ambient")
@@ -159,6 +191,9 @@ game_over_laugh = ExtResource("11_8b04f")
 game_over_win = ExtResource("12_dmp7d")
 growl = ExtResource("13_8tf3f")
 turn_off_after_win = NodePath("Camera2D/CanvasLayer/Flyer/Control")
+turn_off_as_well = [NodePath("Camera2D/CanvasLayer/List"), NodePath("Camera2D/CanvasLayer/ListNear")]
+turn_off_on_win = [NodePath("Camera2D/CanvasLayer"), NodePath("Camera2D/CanvasLayer2")]
+demon = NodePath("Camera2D/CanvasLayer3/Demon")
 chakra_player = NodePath("chakra")
 
 [node name="chakra" type="AudioStreamPlayer" parent="."]
@@ -170,6 +205,46 @@ autoplay = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(512, 512)
+
+[node name="CanvasLayer3" type="CanvasLayer" parent="Camera2D"]
+script = ExtResource("19_1w1lq")
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D/CanvasLayer3"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.0823529, 0.0823529, 0.0823529, 1)
+
+[node name="Demon" type="Sprite2D" parent="Camera2D/CanvasLayer3"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(512, 512)
+texture = ExtResource("33_fqihi")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera2D/CanvasLayer3"]
+libraries = {
+"": SubResource("AnimationLibrary_v7kk7")
+}
+
+[node name="Label" type="Label" parent="Camera2D/CanvasLayer3"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.5
+offset_top = -11.5
+offset_right = 43.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "Game Over"
+label_settings = SubResource("LabelSettings_yqb65")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
 
@@ -230,40 +305,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
-
-[node name="CanvasLayer3" type="CanvasLayer" parent="Camera2D"]
-script = ExtResource("19_1w1lq")
-
-[node name="ColorRect" type="ColorRect" parent="Camera2D/CanvasLayer3"]
-modulate = Color(1, 1, 1, 0)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0.0823529, 0.0823529, 0.0823529, 1)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera2D/CanvasLayer3"]
-libraries = {
-"": SubResource("AnimationLibrary_v7kk7")
-}
-
-[node name="Label" type="Label" parent="Camera2D/CanvasLayer3"]
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -43.5
-offset_top = -11.5
-offset_right = 43.5
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-text = "Game Over"
 
 [node name="Timer" type="Node" parent="."]
 script = ExtResource("1_80hco")
@@ -327,11 +368,6 @@ ap = NodePath("AnimationPlayer")
 libraries = {
 "": SubResource("AnimationLibrary_tc0x7")
 }
-
-[node name="Demon" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0)
-position = Vector2(512, 512)
-texture = ExtResource("33_fqihi")
 
 [connection signal="clicked_product" from="Camera2D/CanvasLayer/Flyer/Control" to="." method="_on_clicked_product"]
 [connection signal="selected_products" from="Camera2D/CanvasLayer/Flyer/Control" to="." method="_on_control_selected_products"]
