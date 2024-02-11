@@ -46,7 +46,7 @@ func _process(delta):
 func _update_spookyness(spooky):
 	$Camera2D/CanvasLayer2/SpookyEffects.get_material().set_shader_parameter("spookyness", spooky);
 	
-	var spooky_strength = (spooky / 6.0) + 1.0;
+	var spooky_strength = (spooky / 12.0) + 1.0;
 	$Camera2D/CanvasLayer/BackgroundBlur.get_material().set_shader_parameter("strength_low", spooky_strength);
 
 
