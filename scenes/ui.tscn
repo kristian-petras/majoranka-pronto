@@ -15,7 +15,6 @@ offset_right = -512.0
 offset_bottom = -512.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 1
 script = ExtResource("1_d67tq")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -29,7 +28,6 @@ offset_right = 870.0
 offset_bottom = 550.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 1
 color = Color(0.870588, 0.870588, 0.870588, 1)
 
 [node name="GridContainer" type="GridContainer" parent="ColorRect"]

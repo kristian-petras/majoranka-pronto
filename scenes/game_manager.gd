@@ -18,8 +18,8 @@ func game_end():
 	_timer.stop_time()
 	print("game_end")
 
-const magnifyingRadius: float = 100.0;
-const zoom: float = 0.7;
+const magnifyingRadius: float = 80.0;
+const zoom: float = 0.7; # between 0 and 1; 1 means no zoom and the lower you go the bigger the zoom
 
 var spookyness = 0;
 var current_spookyness = 0;
