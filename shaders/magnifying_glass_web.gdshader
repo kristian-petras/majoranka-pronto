@@ -51,11 +51,11 @@ void fragment() {
 	//	- it depends on the x coordinate of the pixel
 	//  - pixels more to the side are blurred more strongly
 	//  - this is further modulated based on time
-	float modulate = abs((sin(TIME) + sin(10.0 * TIME) / 10.0)/ 10.0);
+	float modulate = abs((sin(TIME) + sin(10.0 * TIME) / 5.0)/ 10.0);
 	float sx = sin(PI * (SCREEN_UV.x + modulate));
 	float interpolate = 1.0 - (sx * sx);
 	
-	float _lod = strength_low + (interpolate) * (strength_high - strength_low);
+	float _lod = mix(strength_low, strength_high, interpolate);//strength_low + (interpolate) * (strength_high - strength_low);
 	vec2 _uv = SCREEN_UV;
 	
 	vec2 resolution = 1.0 / SCREEN_PIXEL_SIZE;
