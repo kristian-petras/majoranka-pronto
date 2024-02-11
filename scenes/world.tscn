@@ -1,22 +1,32 @@
-[gd_scene load_steps=29 format=3 uid="uid://c7lnqmdi1xql8"]
+[gd_scene load_steps=36 format=3 uid="uid://c7lnqmdi1xql8"]
 
 [ext_resource type="Script" path="res://scripts/timer.gd" id="1_80hco"]
 [ext_resource type="Script" path="res://scenes/game_manager.gd" id="1_h2bln"]
+[ext_resource type="AudioStream" uid="uid://ymkajsk0mge2" path="res://sounds/chakra-1.mp3" id="2_8j7rn"]
 [ext_resource type="Shader" path="res://shaders/magnifying_glass.gdshader" id="2_um7u2"]
 [ext_resource type="Texture2D" uid="uid://dqihjs3hm0upq" path="res://images/list.png" id="3_i0jfi"]
 [ext_resource type="Shader" path="res://scenes/spooky.gdshader" id="3_k28m4"]
+[ext_resource type="AudioStream" uid="uid://bup20g5xihovm" path="res://sounds/chakra-2.mp3" id="3_o60eh"]
+[ext_resource type="AudioStream" uid="uid://ccxd3jy4rru6l" path="res://sounds/chakra-3.mp3" id="4_gwg1u"]
+[ext_resource type="AudioStream" uid="uid://b6f1bt872p6bp" path="res://sounds/chakra-4.mp3" id="5_87jb1"]
 [ext_resource type="Texture2D" uid="uid://cnxw4jyoqvgb" path="res://images/room.png" id="6_5n200"]
 [ext_resource type="FontFile" uid="uid://o0oc414puq6h" path="res://fonts/Brushed.ttf" id="6_5o0av"]
+[ext_resource type="AudioStream" uid="uid://bvyh8bab0xori" path="res://sounds/chakra-5.mp3" id="6_6vool"]
+[ext_resource type="AudioStream" uid="uid://bf7g1wpof7l8w" path="res://sounds/chakra-6.mp3" id="7_88fol"]
+[ext_resource type="AudioStream" uid="uid://dyfteyaymdagy" path="res://sounds/chakra-7.mp3" id="8_8o6ud"]
 [ext_resource type="PackedScene" uid="uid://dfg16hk4wplry" path="res://scenes/ui.tscn" id="8_fwsjg"]
 [ext_resource type="Texture2D" uid="uid://c7qgmdrblpkcq" path="res://images/ticker.png" id="8_mwupj"]
+[ext_resource type="AudioStream" uid="uid://c3aj2cdjhcklc" path="res://sounds/chakra-8.mp3" id="9_g3jgt"]
 [ext_resource type="AudioStream" uid="uid://blomaoj8aiesa" path="res://sounds/clock.mp3" id="9_mbgoq"]
 [ext_resource type="Script" path="res://scenes/clock_ticker.gd" id="9_u7udu"]
 [ext_resource type="AudioStream" uid="uid://f7nlic1qj27h" path="res://sounds/room.mp3" id="10_b1le7"]
+[ext_resource type="AudioStream" uid="uid://duoasca7yeto4" path="res://sounds/church.mp3" id="10_th55q"]
 [ext_resource type="Texture2D" uid="uid://d13w3m404w3yh" path="res://icon.svg" id="15_7b815"]
 [ext_resource type="Script" path="res://scripts/clickable_area.gd" id="16_hbrjc"]
 [ext_resource type="Shader" path="res://shaders/magnifying_glass_local.gdshader" id="17_1w40i"]
 [ext_resource type="Texture2D" uid="uid://bs60kywmljciw" path="res://code-example.png" id="18_1i2a7"]
 [ext_resource type="Texture2D" uid="uid://hg5wcqy86wd3" path="res://images/list_near.png" id="18_mak23"]
+[ext_resource type="Script" path="res://scenes/transition.gd" id="19_1w1lq"]
 [ext_resource type="Script" path="res://scripts/preview_manager.gd" id="19_80vbw"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3vj61"]
@@ -36,17 +46,61 @@ shader_parameter/zoom = 0.7
 shader = ExtResource("3_k28m4")
 shader_parameter/spookyness = 0.0
 
+[sub_resource type="Animation" id="Animation_dlp3g"]
+resource_name = "fade_to_black"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ohb5o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v7kk7"]
+_data = {
+"RESET": SubResource("Animation_ohb5o"),
+"fade_to_black": SubResource("Animation_dlp3g")
+}
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kw8qu"]
 shader = ExtResource("17_1w40i")
 shader_parameter/target = Vector2(300, 300)
 shader_parameter/radius = 50.0
 shader_parameter/strength = 4
 
-[node name="World" type="Node2D" node_paths=PackedStringArray("objective")]
+[node name="World" type="Node2D" node_paths=PackedStringArray("objective", "ambient", "chakra_player")]
 script = ExtResource("1_h2bln")
 objective = NodePath("Camera2D/CanvasLayer/ListNear/Label")
+number_of_objectives = 3
+chakra_sounds = Array[AudioStream]([ExtResource("2_8j7rn"), ExtResource("3_o60eh"), ExtResource("4_gwg1u"), ExtResource("5_87jb1"), ExtResource("6_6vool"), ExtResource("7_88fol"), ExtResource("8_8o6ud"), ExtResource("9_g3jgt")])
+endgame = ExtResource("10_th55q")
+ambient = NodePath("ambient")
+chakra_player = NodePath("chakra")
 
-[node name="ambient" type="AudioStreamPlayer2D" parent="."]
+[node name="chakra" type="AudioStreamPlayer" parent="."]
+volume_db = -7.0
+
+[node name="ambient" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_b1le7")
 autoplay = true
 
@@ -111,6 +165,39 @@ grow_vertical = 2
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
+[node name="CanvasLayer3" type="CanvasLayer" parent="Camera2D"]
+script = ExtResource("19_1w1lq")
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D/CanvasLayer3"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0823529, 0.0823529, 0.0823529, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera2D/CanvasLayer3"]
+libraries = {
+"": SubResource("AnimationLibrary_v7kk7")
+}
+
+[node name="Label" type="Label" parent="Camera2D/CanvasLayer3"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.5
+offset_top = -11.5
+offset_right = 43.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "Game Over"
+
 [node name="Timer" type="Node" parent="."]
 script = ExtResource("1_80hco")
 
@@ -124,6 +211,7 @@ offset = Vector2(-18.8276, 70.8765)
 script = ExtResource("9_u7udu")
 
 [node name="Clock" type="AudioStreamPlayer2D" parent="Timer"]
+position = Vector2(802, 567)
 stream = ExtResource("9_mbgoq")
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -144,6 +232,7 @@ nodeToPreview = NodePath("../Camera2D/CanvasLayer/Flyer")
 previewManager = NodePath("../PreviewManager")
 
 [node name="PreviewManager" type="Node2D" parent="."]
+position = Vector2(1, 0)
 script = ExtResource("19_80vbw")
 
 [node name="letak-open" type="Sprite2D" parent="."]

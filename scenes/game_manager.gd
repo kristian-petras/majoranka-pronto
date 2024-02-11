@@ -3,8 +3,16 @@ extends Node2D
 @onready var _timer = $Timer
 @onready var clock = $Timer/Clock
 @export var objective: Label
-
+@export var number_of_objectives: int
+@export var chakra_sounds: Array[AudioStream]
 var objective_products = []
+
+@export var endgame: AudioStream
+@export var ambient: AudioStreamPlayer
+@onready var clock_player = $Timer/Clock
+
+@onready var ap = $Camera2D/CanvasLayer3/AnimationPlayer
+@onready var game_over_text = $Camera2D/CanvasLayer3/Label
 
 var clicked_products = []
 
@@ -21,6 +29,12 @@ func _on_game_start():
 
 func game_end():
 	_timer.stop_time()
+	ap.play("fade_to_black")
+	chakra_player.stream = endgame
+	clock_player.stop()
+	ambient.stop()
+	chakra_player.play()
+	game_over_text.visible = true
 	print("game_end")
 
 const magnifyingRadius: float = 200.0;
@@ -58,22 +72,29 @@ func _update_spookyness(spooky):
 func _on_control_selected_products(products):
 	var temp_products = products.duplicate()
 	temp_products.shuffle()
-	temp_products = temp_products.slice(0, 8)
+	temp_products = temp_products.slice(0, number_of_objectives)
 	for t in temp_products:
 		objective_products.append(t.product_name.text)
 	for product in objective_products:
 		objective.text += product + "\n"
 	objective_products.sort()
 
+@export var chakra_player: AudioStreamPlayer
 
 func _on_clicked_product(product):
-	print(product)
 	if product in clicked_products:
-		print("removed product " + product)
-		clicked_products.erase(product)
+		if product in objective_products:
+			print("cannot remove objective product " + product)
+		else:
+			print("removed product " + product)
+			clicked_products.erase(product)
 	else:
 		print("added product " + product)
 		clicked_products.append(product)
+		if product in objective_products:
+			chakra_player.stream = chakra_sounds[clicked_objective_products]
+			chakra_player.play()
+			clicked_objective_products += 1
 	clicked_products.sort()
 	print()
 	print("Clicked products: ")
@@ -87,3 +108,4 @@ func _on_clicked_product(product):
 	if clicked_products == objective_products:
 		game_end()
 	
+var clicked_objective_products = 0
