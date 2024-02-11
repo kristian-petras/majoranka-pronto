@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://c7lnqmdi1xql8"]
+[gd_scene load_steps=42 format=3 uid="uid://c7lnqmdi1xql8"]
 
 [ext_resource type="Script" path="res://scripts/timer.gd" id="1_80hco"]
 [ext_resource type="Script" path="res://scenes/game_manager.gd" id="1_h2bln"]
@@ -25,8 +25,6 @@
 [ext_resource type="AudioStream" uid="uid://ciwomyx7y5jvn" path="res://sounds/growl.mp3" id="13_8tf3f"]
 [ext_resource type="Texture2D" uid="uid://d13w3m404w3yh" path="res://icon.svg" id="15_7b815"]
 [ext_resource type="Script" path="res://scripts/clickable_area.gd" id="16_hbrjc"]
-[ext_resource type="Shader" path="res://shaders/magnifying_glass_local.gdshader" id="17_1w40i"]
-[ext_resource type="Texture2D" uid="uid://bs60kywmljciw" path="res://code-example.png" id="18_1i2a7"]
 [ext_resource type="Texture2D" uid="uid://hg5wcqy86wd3" path="res://images/list_near.png" id="18_mak23"]
 [ext_resource type="Script" path="res://scenes/transition.gd" id="19_1w1lq"]
 [ext_resource type="Script" path="res://scripts/preview_manager.gd" id="19_80vbw"]
@@ -41,7 +39,7 @@ font = ExtResource("6_5o0av")
 font_color = Color(0.137255, 0.137255, 0.137255, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_i3nq1"]
-shader = ExtResource("2_um7u2")
+shader = ExtResource("8_x5k1t")
 shader_parameter/target = Vector2(0.5, 0.5)
 shader_parameter/strength_low = 1.0
 shader_parameter/strength_high = 4.0
