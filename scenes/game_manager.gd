@@ -48,3 +48,8 @@ func _update_spookyness(spooky):
 	
 	var spooky_strength = (spooky / 6.0) + 1.0;
 	$Camera2D/CanvasLayer/BackgroundBlur.get_material().set_shader_parameter("strength_low", spooky_strength);
+
+
+func _on_control_selected_products(products):
+	print("hoaoaoao111")
+	pass # Replace with function body.

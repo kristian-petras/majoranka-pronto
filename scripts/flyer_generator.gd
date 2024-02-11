@@ -3,11 +3,14 @@ extends Node
 var _product_scene = preload("res://scenes/product.tscn")
 @onready var grid = $ColorRect/GridContainer
 
+signal selected_products(products)
+
 func _ready():
 	randomize()
 	var products = dir_contents("res://images/medication/")
 	products.shuffle()
 	products = products.slice(0, 40)
+	selected_products.emit(products)
 	for product in products:
 		grid.add_child(product)
 	
