@@ -1,11 +1,14 @@
 [gd_scene load_steps=6 format=3 uid="uid://dl7y3rxhxsnlj"]
 
 [ext_resource type="Script" path="res://scenes/product.gd" id="1_nlkxe"]
-[ext_resource type="Texture2D" uid="uid://bh61jb5131l01" path="res://images/medication/Zolpivir.webp" id="2_ii8di"]
 [ext_resource type="Script" path="res://scenes/TextureButton.gd" id="3_cunj0"]
 [ext_resource type="Texture2D" uid="uid://d13w3m404w3yh" path="res://icon.svg" id="4_lmeek"]
 
+[sub_resource type="SystemFont" id="SystemFont_letjo"]
+font_names = PackedStringArray("Comic Sans MS")
+
 [sub_resource type="LabelSettings" id="LabelSettings_t105y"]
+font = SubResource("SystemFont_letjo")
 font_size = 11
 outline_size = 8
 outline_color = Color(0, 0, 0, 1)
@@ -25,28 +28,12 @@ offset_bottom = -412.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_nlkxe")
-product_image = NodePath("Image")
+product_image = NodePath("")
 product_name = NodePath("Name")
 product_button = NodePath("TextureButton2")
 
-[node name="Image" type="TextureRect" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -50.0
-offset_top = -50.0
-offset_right = 974.0
-offset_bottom = 974.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("2_ii8di")
-
 [node name="TextureButton2" type="TextureButton" parent="."]
+layout_mode = 0
 offset_right = 128.0
 offset_bottom = 128.0
 texture_normal = ExtResource("4_lmeek")
