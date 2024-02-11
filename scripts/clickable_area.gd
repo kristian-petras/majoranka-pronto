@@ -3,6 +3,7 @@ extends Sprite2D
 
 @export var id = "koko";
 @export var nodeToPreview: Node2D;
+@export var node_to_hide: Node2D
 
 @export var previewManager: PreviewManager;
 
@@ -18,8 +19,10 @@ func _input(event):
 			print("showing preview of %s" % id)
 			nodeToPreview.visible = true
 			nodeToPreview.top_level = true
-			visible = false
+			if node_to_hide != null:
+				node_to_hide.visible = false
 
 func close_preview():
-	visible = true
+	if node_to_hide != null:
+		node_to_hide.visible = true
 	nodeToPreview.visible = false

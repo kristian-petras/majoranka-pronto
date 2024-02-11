@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dfg16hk4wplry"]
+[gd_scene load_steps=3 format=3 uid="uid://dfg16hk4wplry"]
 
 [ext_resource type="Script" path="res://scripts/flyer_generator.gd" id="1_d67tq"]
+[ext_resource type="Texture2D" uid="uid://bap33uwnorftf" path="res://images/book.png" id="2_los6x"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -9,28 +10,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -512.0
-offset_top = -512.0
-offset_right = -512.0
-offset_bottom = -512.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_d67tq")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_right = 870.0
-offset_bottom = 550.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.870588, 0.870588, 0.870588, 1)
+[node name="Book" type="Sprite2D" parent="."]
+scale = Vector2(1.175, 1)
+texture = ExtResource("2_los6x")
 
-[node name="GridContainer" type="GridContainer" parent="ColorRect"]
+[node name="GridContainer" type="GridContainer" parent="."]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 1
 anchors_preset = 8
@@ -38,10 +26,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -400.0
-offset_top = -250.0
-offset_right = 400.0
-offset_bottom = 250.0
+offset_left = -419.0
+offset_top = -269.0
+offset_right = 381.0
+offset_bottom = 231.0
 grow_horizontal = 2
 grow_vertical = 2
 columns = 8

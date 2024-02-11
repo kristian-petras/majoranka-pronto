@@ -1,7 +1,7 @@
 extends Node
 
 var _product_scene = preload("res://scenes/product.tscn")
-@onready var grid = $ColorRect/GridContainer
+@onready var grid = $GridContainer
 
 signal selected_products(products)
 

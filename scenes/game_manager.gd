@@ -2,6 +2,9 @@ extends Node2D
 
 @onready var _timer = $Timer
 @onready var clock = $Timer/Clock
+@export var objective: Label
+
+var objective_products = []
 
 func _on_ticker_current_hour(hour):
 	spookyness = hour
@@ -19,7 +22,7 @@ func game_end():
 	print("game_end")
 
 const magnifyingRadius: float = 80.0;
-const zoom: float = 0.7; # between 0 and 1; 1 means no zoom and the lower you go the bigger the zoom
+const zoom: float = 0.5; # between 0 and 1; 1 means no zoom and the lower you go the bigger the zoom
 
 var spookyness = 0;
 var current_spookyness = 0;
@@ -51,5 +54,8 @@ func _update_spookyness(spooky):
 
 
 func _on_control_selected_products(products):
-	print("hoaoaoao111")
-	pass # Replace with function body.
+	objective_products = products.duplicate()
+	objective_products.shuffle()
+	objective_products = objective_products.slice(0, 8)
+	for product in objective_products:
+		objective.text += product.product_name.text + "\n"
