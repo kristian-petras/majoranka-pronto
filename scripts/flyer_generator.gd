@@ -5,6 +5,8 @@ var _product_scene = preload("res://scenes/product.tscn")
 
 signal selected_products(products)
 
+signal clicked_product(product)
+
 func _ready():
 	randomize()
 	var products = dir_contents("res://images/medication/")
@@ -31,6 +33,7 @@ func dir_contents(path):
 						product.product_button.scale = Vector2(0.1,0.1)
 						product.product_button.texture_normal = texture
 						product.product_name.text = file_name.split(".")[0]
+						product.test.connect(okej_bumer)
 						products.append(product)
 					else:
 						print("Failed to load texture from path: ", file_name)
@@ -40,3 +43,7 @@ func dir_contents(path):
 	else:
 		print("An error occurred when trying to access the path.")
 	return products
+
+func okej_bumer(a):
+	print(a)
+	clicked_product.emit(a)

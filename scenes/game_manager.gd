@@ -6,6 +6,8 @@ extends Node2D
 
 var objective_products = []
 
+var clicked_products = []
+
 func _on_ticker_current_hour(hour):
 	spookyness = hour
 	print(hour)
@@ -21,7 +23,7 @@ func game_end():
 	_timer.stop_time()
 	print("game_end")
 
-const magnifyingRadius: float = 80.0;
+const magnifyingRadius: float = 200.0;
 const zoom: float = 0.5; # between 0 and 1; 1 means no zoom and the lower you go the bigger the zoom
 
 var spookyness = 0;
@@ -54,8 +56,34 @@ func _update_spookyness(spooky):
 
 
 func _on_control_selected_products(products):
-	objective_products = products.duplicate()
-	objective_products.shuffle()
-	objective_products = objective_products.slice(0, 8)
+	var temp_products = products.duplicate()
+	temp_products.shuffle()
+	temp_products = temp_products.slice(0, 8)
+	for t in temp_products:
+		objective_products.append(t.product_name.text)
 	for product in objective_products:
-		objective.text += product.product_name.text + "\n"
+		objective.text += product + "\n"
+	objective_products.sort()
+
+
+func _on_clicked_product(product):
+	print(product)
+	if product in clicked_products:
+		print("removed product " + product)
+		clicked_products.erase(product)
+	else:
+		print("added product " + product)
+		clicked_products.append(product)
+	clicked_products.sort()
+	print()
+	print("Clicked products: ")
+	for p in clicked_products:
+		print(p)
+		
+	print()
+	print("Objective products: ")
+	for p in objective_products:
+		print(p)
+	if clicked_products == objective_products:
+		game_end()
+	

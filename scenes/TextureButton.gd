@@ -12,5 +12,4 @@ func _process(delta):
 
 
 func _on_pressed():
-	print("ohohoho")
 	pass # Replace with function body.
