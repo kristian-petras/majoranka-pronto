@@ -7,13 +7,15 @@ extends Sprite2D
 
 @export var previewManager: PreviewManager;
 
+var is_enabled = false
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 	# print("%s - %s" % [id, get_rect()]);
 
 func _input(event):
-	if event is InputEventMouseButton and event.is_released() and event.button_index == MOUSE_BUTTON_LEFT:
+	if event is InputEventMouseButton and event.is_released() and event.button_index == MOUSE_BUTTON_LEFT and is_enabled:
 		var clickedOnThis = get_rect().has_point(to_local(event.position))
 		if clickedOnThis and previewManager.try_lock_preview(self):
 			print("showing preview of %s" % id)

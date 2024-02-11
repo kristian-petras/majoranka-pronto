@@ -23,14 +23,17 @@ func _on_ticker_current_hour(hour):
 	spookyness = hour
 	print(hour)
 	if hour == 11:
-		game_end()
+		game_end(false)
 	
 func _on_game_start():
+	$Camera2D/CanvasLayer/BackgroundBlur.get_material().set_shader_parameter("zoom", zoom);
+	$Camera2D/CanvasLayer/BackgroundBlur.get_material().set_shader_parameter("radius", magnifyingRadius);
+	# $"letak-open".get_material().set_shader_parameter("radius", magnifyingRadius);
 	_timer.start_time()
 	clock.autoplay = true
 	clock.play()
 
-func game_end():
+func game_end(evil):
 	_timer.stop_time()
 	ap.play("fade_to_black")
 	clock_player.stop()
@@ -44,7 +47,10 @@ func game_end():
 		chakra_player.play()
 		ambient.stream = game_over_laugh
 		ambient.play()
-		game_over_text.text = "You did not manage to order your medicine in time."
+		if !evil:
+			game_over_text.text = "You did not manage to order your medicine in time."
+		else:
+			game_over_text.text = "He did not like your behaviour."
 	game_over_text.visible = true
 	print("game_end")
 
@@ -53,13 +59,6 @@ const zoom: float = 0.5; # between 0 and 1; 1 means no zoom and the lower you go
 
 var spookyness = 0;
 var current_spookyness = 0;
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	$Camera2D/CanvasLayer/BackgroundBlur.get_material().set_shader_parameter("zoom", zoom);
-	$Camera2D/CanvasLayer/BackgroundBlur.get_material().set_shader_parameter("radius", magnifyingRadius);
-	# $"letak-open".get_material().set_shader_parameter("radius", magnifyingRadius);
-	_on_game_start()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -121,7 +120,10 @@ func _on_clicked_product(product):
 			chakra_player.play()
 			clicked_objective_products += 1
 		else:
-			magnifyingRadius = max(20, magnifyingRadius - 20)	
+			magnifyingRadius = max(20, magnifyingRadius - 20)
+			if magnifyingRadius == 20:
+				game_end(true)
+				return
 			$Camera2D/CanvasLayer/BackgroundBlur.get_material().set_shader_parameter("radius", magnifyingRadius);
 	clicked_products.sort()
 	print()
@@ -134,6 +136,6 @@ func _on_clicked_product(product):
 	for p in objective_products:
 		print(p)
 	if clicked_products == objective_products:
-		game_end()
+		game_end(false)
 	
 var clicked_objective_products = 0
