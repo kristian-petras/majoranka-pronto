@@ -1,6 +1,6 @@
 extends Sprite2D
 
-@export var hour_tick_count = 6
+@export var hour_tick_count = 10
 
 var _current_hour = 0
 

@@ -23,7 +23,7 @@ var clicked_products = []
 func _on_ticker_current_hour(hour):
 	spookyness = hour
 	print(hour)
-	if hour == 11:
+	if hour == 12:
 		game_end(false)
 	
 func _on_game_start():
