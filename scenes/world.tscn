@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://dfg16hk4wplry" path="res://scenes/ui.tscn" id="8_fwsjg"]
 [ext_resource type="Texture2D" uid="uid://c7qgmdrblpkcq" path="res://images/ticker.png" id="8_mwupj"]
 [ext_resource type="AudioStream" uid="uid://c3aj2cdjhcklc" path="res://sounds/chakra-8.mp3" id="9_g3jgt"]
+[ext_resource type="Shader" path="res://shaders/magnifying_glass_web.gdshader" id="8_x5k1t"]
 [ext_resource type="AudioStream" uid="uid://blomaoj8aiesa" path="res://sounds/clock.mp3" id="9_mbgoq"]
 [ext_resource type="Script" path="res://scenes/clock_ticker.gd" id="9_u7udu"]
 [ext_resource type="AudioStream" uid="uid://f7nlic1qj27h" path="res://sounds/room.mp3" id="10_b1le7"]
@@ -24,8 +25,6 @@
 [ext_resource type="AudioStream" uid="uid://cwhl5yx7e8ws7" path="res://sounds/corridor.mp3" id="12_dmp7d"]
 [ext_resource type="Texture2D" uid="uid://d13w3m404w3yh" path="res://icon.svg" id="15_7b815"]
 [ext_resource type="Script" path="res://scripts/clickable_area.gd" id="16_hbrjc"]
-[ext_resource type="Shader" path="res://shaders/magnifying_glass_local.gdshader" id="17_1w40i"]
-[ext_resource type="Texture2D" uid="uid://bs60kywmljciw" path="res://code-example.png" id="18_1i2a7"]
 [ext_resource type="Texture2D" uid="uid://hg5wcqy86wd3" path="res://images/list_near.png" id="18_mak23"]
 [ext_resource type="Script" path="res://scenes/transition.gd" id="19_1w1lq"]
 [ext_resource type="Script" path="res://scripts/preview_manager.gd" id="19_80vbw"]
@@ -40,10 +39,10 @@ font = ExtResource("6_5o0av")
 font_color = Color(0.137255, 0.137255, 0.137255, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_i3nq1"]
-shader = ExtResource("2_um7u2")
+shader = ExtResource("8_x5k1t")
 shader_parameter/target = Vector2(0.5, 0.5)
-shader_parameter/strength_low = 1.0
-shader_parameter/strength_high = 4.0
+shader_parameter/strength_low = 5.0
+shader_parameter/strength_high = 18.0
 shader_parameter/radius = 108.784
 shader_parameter/zoom = 0.7
 
