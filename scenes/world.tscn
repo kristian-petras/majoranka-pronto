@@ -33,6 +33,23 @@
 [ext_resource type="Script" path="res://scenes/glass_init.gd" id="32_nfjsx"]
 [ext_resource type="Texture2D" uid="uid://cs1pa0cn58o4s" path="res://images/demon.png" id="33_fqihi"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_3vj61"]
+line_spacing = 30.0
+font = ExtResource("6_5o0av")
+font_color = Color(0.137255, 0.137255, 0.137255, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i3nq1"]
+shader = ExtResource("8_x5k1t")
+shader_parameter/target = Vector2(0.5, 0.5)
+shader_parameter/strength_low = 7.0
+shader_parameter/strength_high = 20.0
+shader_parameter/radius = 108.784
+shader_parameter/zoom = 0.7
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i4u70"]
+shader = ExtResource("3_k28m4")
+shader_parameter/spookyness = 0.0
+
 [sub_resource type="Animation" id="Animation_ohb5o"]
 length = 0.001
 tracks/0/type = "value"
@@ -372,6 +389,7 @@ libraries = {
 [connection signal="clicked_product" from="Camera2D/CanvasLayer/Flyer/Control" to="." method="_on_clicked_product"]
 [connection signal="selected_products" from="Camera2D/CanvasLayer/Flyer/Control" to="." method="_on_control_selected_products"]
 [connection signal="selected_products" from="Camera2D/CanvasLayer/Flyer/Control" to="Camera2D/CanvasLayer/ListNear/Label" method="_on_control_selected_products"]
+[connection signal="animation_finished" from="Camera2D/CanvasLayer3/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="time_feed" from="Timer" to="Timer/Ticker" method="_on_tick"]
 [connection signal="current_hour" from="Timer/Ticker" to="." method="_on_ticker_current_hour"]
 [connection signal="current_hour" from="Timer/Ticker" to="Timer/Ticker" method="_on_current_hour"]

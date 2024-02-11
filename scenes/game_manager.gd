@@ -28,6 +28,17 @@ var objective_products = []
 
 var clicked_products = []
 
+var is_game_over: bool = false
+
+func _ready():
+	is_game_over = false
+	
+	$Camera2D/CanvasLayer/BackgroundBlur.get_material().set_shader_parameter("zoom", zoom);
+	$Camera2D/CanvasLayer/BackgroundBlur.get_material().set_shader_parameter("radius", magnifyingRadius);
+	_update_spookyness(0)
+	
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
 func _on_ticker_current_hour(hour):
 	spookyness = hour
 	print(hour)
@@ -35,8 +46,6 @@ func _on_ticker_current_hour(hour):
 		game_end(false)
 	
 func _on_game_start():
-	$Camera2D/CanvasLayer/BackgroundBlur.get_material().set_shader_parameter("zoom", zoom);
-	$Camera2D/CanvasLayer/BackgroundBlur.get_material().set_shader_parameter("radius", magnifyingRadius);
 	# $"letak-open".get_material().set_shader_parameter("radius", magnifyingRadius);
 	_timer.start_time()
 	clock.autoplay = true
@@ -68,10 +77,10 @@ func game_end(evil):
 			game_over_text.text = "You did not manage to order your medicine in time."
 		else:
 			game_over_text.text = "He did not like your behaviour."
-	game_over_text.visible = true
-	print("game_end")
 
-var magnifyingRadius: float = 200.0;
+	game_over_text.visible = true
+
+var magnifyingRadius: float = 150.0;
 const zoom: float = 0.5; # between 0 and 1; 1 means no zoom and the lower you go the bigger the zoom
 
 var spookyness = 0;
@@ -88,13 +97,11 @@ func _process(delta):
 		current_spookyness += delta
 		_update_spookyness(current_spookyness)
 
-
 func _update_spookyness(spooky):
 	$Camera2D/CanvasLayer2/SpookyEffects.get_material().set_shader_parameter("spookyness", spooky);
 	
 	# var spooky_strength = (spooky / 12.0) + 1.0;
 	# $Camera2D/CanvasLayer/BackgroundBlur.get_material().set_shader_parameter("strength_low", spooky_strength);
-
 
 func _on_control_selected_products(products):
 	var temp_products = products.duplicate()
@@ -107,7 +114,6 @@ func _on_control_selected_products(products):
 	objective_products.sort()
 
 @export var chakra_player: AudioStreamPlayer
-
 
 @onready var product_control = $Camera2D/CanvasLayer/Flyer/Control/GridContainer
 var product_children = []
@@ -159,3 +165,13 @@ func _on_clicked_product(product):
 		game_end(false)
 	
 var clicked_objective_products = 0
+
+func _input(event):
+	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
+		if is_game_over:
+			print("reseting scene")
+			get_tree().reload_current_scene()
+
+func _on_animation_player_animation_finished(anim_name):
+	if anim_name == "fade_to_black":
+		is_game_over = true
